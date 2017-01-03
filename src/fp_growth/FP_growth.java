@@ -33,7 +33,7 @@ public class FP_growth {
 			dataSource.clear_cache();// 释放内存（必要）
 			
 			Set<List<Integer>> child_freqSetList = new HashSet<List<Integer>>();
-			if (child_fptree.root.child.isEmpty()) {// 是空的树
+			if (child_fptree.root.children.isEmpty()) {// 是空的树
 				List<Integer> set = new ArrayList<Integer>();
 				child_freqSetList.add(set);
 			} else {
