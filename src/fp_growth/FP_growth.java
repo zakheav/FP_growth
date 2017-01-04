@@ -12,10 +12,11 @@ import dataInput.DataSource;
 import dataInput.TreeDataSource;
 
 public class FP_growth {
-	private FP_tree FPTree;
-
+	private final FP_tree FPTree;
+	private final int setSize;// 频繁集的大小上线
 	public FP_growth() {
-		FPTree = new FP_tree(new DBDataSource());
+		this.FPTree = new FP_tree(new DBDataSource());
+		this.setSize = 2;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -44,7 +45,8 @@ public class FP_growth {
 			}
 			for(Map<String, Object> dataMap : child_freqSetData) {// 把每个频繁集加上end这个后缀
 				((List<Integer>)dataMap.get("data")).add(end);
-				result.add(dataMap);
+				if(((List<Integer>)dataMap.get("data")).size() <= setSize)// 只储存大小在setSize之内的频繁集
+					result.add(dataMap);
 			}
 			// 把end这个后缀单独组成的频繁集加入到result中
 			Map<String, Object> endFreqData = new HashMap<String, Object>();

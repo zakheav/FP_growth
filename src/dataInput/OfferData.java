@@ -20,7 +20,7 @@ class DataStruct {
 }
 
 public class OfferData {// 从DataSource中提取数据，并且清洗，然后通过get_nextData提供给FPTree用于构造
-	private int freqThreshold = 2;
+	private int freqThreshold = 2;// 设置频繁集的出现次数下限
 	private Map<Integer, Integer> dataFreq = new HashMap<Integer, Integer>();// 存储元素出现的次数。key是元素，value是元素出现的次数
 	private DataSource dataSource;
 
